@@ -1,0 +1,12 @@
+[package]
+name = "mathx"
+version = "0.1.0"
+authors = ["Paul Casanova"]
+edition = "2021"
+
+[features]
+default = []
+no_std = []
+
+[dependencies]
+serde = {version = "1.0.217", optional = true}
