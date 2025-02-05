@@ -1,3 +1,4 @@
+
 use core::ops::Range;
 
 /// A "static" structure used to compute math functions. Since `f32` gets a lot of it's

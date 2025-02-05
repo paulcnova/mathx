@@ -4,20 +4,20 @@ mod math;
 pub use math::Math;
 // pub mod interfaces;
 
-// #[cfg(not(all(feature = "no_vectors", feature = "no_quaternions")))]
-// mod arithmetic;
-// #[cfg(not(all(feature = "no_vectors", feature = "no_quaternions")))]
-// pub(crate) use arithmetic::*;
+#[cfg(not(all(feature = "no_vectors", feature = "no_quaternions")))]
+mod arithmetic;
+#[cfg(not(all(feature = "no_vectors", feature = "no_quaternions")))]
+pub(crate) use arithmetic::*;
 
-// #[cfg(not(feature = "no_quaternions"))]
-// mod quaternions;
-// #[cfg(not(feature = "no_quaternions"))]
-// pub use quaternions::Quaternion;
+#[cfg(not(feature = "no_quaternions"))]
+mod quaternions;
+#[cfg(not(feature = "no_quaternions"))]
+pub use quaternions::Quaternion;
 
-// #[cfg(not(feature = "no_vectors"))]
-// mod vectors;
-// #[cfg(not(feature = "no_vectors"))]
-// pub use vectors::{Vector3, Vector2};
+#[cfg(not(feature = "no_vectors"))]
+mod vectors;
+#[cfg(not(feature = "no_vectors"))]
+pub use vectors::{Vector3, Vector2};
 
 // #[cfg(not(all(feature = "no_rays", feature = "no_vectors")))]
 // mod rays;
