@@ -3,9 +3,15 @@ name = "mathx"
 version = "1.1.0"
 authors = ["Paul Casanova"]
 edition = "2021"
+description = "A mathematics library designed to work with no_std"
+documentation = "https://docs.rs/mathx"
+readme = "README.md"
+repository = "https://github.com/paulcnova/mathx"
+license = "MIT"
+keywords = ["mathematics", "no_std", "embedded"]
 
 [features]
-default = []
+default = ["no_std"]
 no_std = []
 no_vectors = []
 no_quaternions = []
@@ -15,4 +21,4 @@ no_planes = []
 no_collision = []
 
 [dependencies]
-serde = {version = "1.0.217", optional = true}
+serde = { version = "1.0.217", optional = true }
