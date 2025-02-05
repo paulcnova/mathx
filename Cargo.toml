@@ -1,6 +1,6 @@
 [package]
 name = "mathx"
-version = "0.3.0"
+version = "1.1.0"
 authors = ["Paul Casanova"]
 edition = "2021"
 
@@ -10,6 +10,9 @@ no_std = []
 no_vectors = []
 no_quaternions = []
 no_colors = []
+no_rays = []
+no_planes = []
+no_collision = []
 
 [dependencies]
 serde = {version = "1.0.217", optional = true}
