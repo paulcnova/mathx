@@ -32,7 +32,7 @@ pub use vectors::{Vector3, Vector2};
 // #[cfg(not(feature = "no_collision"))]
 // pub mod collision;
 
-// #[cfg(not(feature = "no_colors"))]
-// mod colors;
-// #[cfg(not(feature = "no_colors"))]
-// pub use colors::Color;
+#[cfg(not(feature = "no_colors"))]
+mod colors;
+#[cfg(not(feature = "no_colors"))]
+pub use colors::Color;
