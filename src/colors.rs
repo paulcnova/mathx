@@ -318,6 +318,101 @@ impl Color {
 	pub fn set_alpha_as_byte(&mut self, value: u8) { self.a = value as f32 / 255.0 }
 }
 
+/// Methods
+impl Color {
+	/// Creates a new color that's a grayscale of this color
+	/// 
+	/// **Returns**: Returns the grayscale version of the color (non-destructive).
+	/// #### Examples
+	/// ```
+	/// # use mathx::Color;
+	/// let color = Color::new(1.0, 0.6, 0.2);
+	/// let grayscale = color.to_grayscale();
+	/// assert_eq!(0.6, grayscale.red());
+	/// assert_eq!(0.6, grayscale.green());
+	/// assert_eq!(0.6, grayscale.blue());
+	/// let color = Color::new(0.4, 0.4, 0.4);
+	/// let grayscale = color.to_grayscale();
+	/// assert_eq!(0.4, grayscale.red());
+	/// assert_eq!(0.4, grayscale.green());
+	/// assert_eq!(0.4, grayscale.blue());
+	/// let color = Color::new_str("gold");
+	/// let grayscale = color.to_grayscale();
+	/// assert_eq!(0.6143791, grayscale.red());
+	/// assert_eq!(0.6143791, grayscale.green());
+	/// assert_eq!(0.6143791, grayscale.blue());
+	/// ```
+	pub fn to_grayscale(&self) -> Self {
+		let value: f32 = self.get_grayscale_value();
+		
+		Color::new_alpha(value, value, value, self.a)
+	}
+	
+	/// Creates a color that's a grayscale of this color
+	/// 
+	/// **Returns**: Returns the grayscale version of the color.
+	/// #### Examples
+	/// ```
+	/// # use mathx::Color;
+	/// let color = Color::new(1.0, 0.6, 0.2);
+	/// let grayscale = color.as_grayscale();
+	/// assert_eq!(0.6, grayscale.red());
+	/// assert_eq!(0.6, grayscale.green());
+	/// assert_eq!(0.6, grayscale.blue());
+	/// let color = Color::new(0.4, 0.4, 0.4);
+	/// let grayscale = color.as_grayscale();
+	/// assert_eq!(0.4, grayscale.red());
+	/// assert_eq!(0.4, grayscale.green());
+	/// assert_eq!(0.4, grayscale.blue());
+	/// let color = Color::new_str("gold");
+	/// let grayscale = color.as_grayscale();
+	/// assert_eq!(0.6143791, grayscale.red());
+	/// assert_eq!(0.6143791, grayscale.green());
+	/// assert_eq!(0.6143791, grayscale.blue());
+	/// ```
+	pub fn as_grayscale(self) -> Self {
+		let value: f32 = self.get_grayscale_value();
+		
+		Color::new_alpha(value, value, value, self.a)
+	}
+	
+	/// Gets the grayscale value of the color
+	/// 
+	/// **Returns**: Returns the grayscale value of the color.
+	/// #### Examples
+	/// ```
+	/// # use mathx::Color;
+	/// let color = Color::new(1.0, 0.6, 0.2);
+	/// let grayscale = color.get_grayscale_value();
+	/// assert_eq!(0.6, grayscale);
+	/// let color = Color::new(0.4, 0.4, 0.4);
+	/// let grayscale = color.get_grayscale_value();
+	/// assert_eq!(0.4, grayscale);
+	/// let color = Color::new_str("gold");
+	/// let grayscale = color.get_grayscale_value();
+	/// assert_eq!(0.6143791, grayscale);
+	/// ```
+	pub fn get_grayscale_value(&self) -> f32  { (self.r + self.g + self.b) / 3.0 }
+	
+	/// Gets the grayscale value of the color in the form of a byte
+	/// 
+	/// **Returns**: Returns the grayscale value of the color in the form of a byte.
+	/// #### Examples
+	/// ```
+	/// # use mathx::Color;
+	/// let color = Color::new(1.0, 0.6, 0.2);
+	/// let grayscale = color.get_grayscale_value_as_byte();
+	/// assert_eq!(153, grayscale);
+	/// let color = Color::new(0.4, 0.4, 0.4);
+	/// let grayscale = color.get_grayscale_value_as_byte();
+	/// assert_eq!(102, grayscale);
+	/// let color = Color::new_str("gold");
+	/// let grayscale = color.get_grayscale_value_as_byte();
+	/// assert_eq!(156, grayscale);
+	/// ```
+	pub fn get_grayscale_value_as_byte(&self) -> u8  { (((self.r + self.g + self.b) / 3.0) * 255.0) as u8 }
+}
+
 // Equates
 impl Eq for Color {}
 impl PartialEq for Color {
